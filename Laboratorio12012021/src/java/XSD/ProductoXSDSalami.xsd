@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:documentation>
+            SCHEMA SALAMI SLICE
+        </xs:documentation>
+    </xs:annotation>
+    
+    <!-- Elementos Globales-->
+    
+    <xs:element name="productos">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="producto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Defincion de elementos simples-->
+    <xs:element name="codigo" type="xs:string"/>
+    <xs:element name="id" type="xs:int"/>
+    <xs:element name="nombre" type="xs:string"/>
+    
+    <!-- Defincion de elementos complejos-->
+    
+    <xs:element name="identificacion">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="codigo"/>
+                <xs:element ref="id" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>    
+    </xs:element>
+    
+    <xs:element name="producto">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="identificacion"/>    
+                <xs:element ref="nombre"/> 
+            </xs:sequence>        
+        </xs:complexType>   
+    </xs:element>
+     
+</xs:schema>
